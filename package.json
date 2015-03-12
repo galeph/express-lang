@@ -1,0 +1,26 @@
+{
+	"name": "express-lang",
+	"version": "0.0.8",
+	"description": "Transductor for ExpressJs",
+	"main": "lib/index.js",
+	"repository": {
+		"type": "git",
+		"url": "git@github.com:galeph/express-lang.git"
+	},
+	"dependencies": {
+		"underscore" : ">=1.6.0"
+	},
+	"devDependencies": {
+		"mocha": "*"
+	},
+	"bin": {
+		"require": "lib/index.js"
+	},
+	"keywords": [
+		"express",
+		"language",
+		"translate"
+	],
+	"author": "Galeph <open@galeph.com>",
+	"license": "MIT"
+}
