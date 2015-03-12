@@ -26,7 +26,7 @@ Store
 
 	util.inherits(translate,  expressLang.Store);
 
-	translate.prototype.getLang = function (langs, fn) {
+	translate.prototype.getLang = function (langs, fn) { // This is VERY IMPORTAN!
 		// langs => [ 'es_es', 'es', 'en_us', 'en' ]
 		var keys = {
 			// Your translate
