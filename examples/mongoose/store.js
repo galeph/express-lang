@@ -23,11 +23,11 @@ util.inherits(translate,  lang.Store);
 translate.prototype.getLang = function (langs, fn) {
 	var list = [ ];
 	for (var i = langs.length - 1; i >= 0; i--)
-		if(langs[i]) list.push( { code : langs[i] });
+		if(langs[i]) list.push({ code : langs[i] });
 
 	this.model.findOne({ 
-		public : true, 
-		$or : list.reverse() 
+		public : true,
+		$or : list.reverse()
 	}).populate('extend').exec(function (err, doc) {
 		if(err || !doc) return fn(err);
 		fn(err, _.defaults( doc.keys, doc.extends.key || {}), doc.code);
