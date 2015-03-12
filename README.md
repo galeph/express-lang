@@ -55,15 +55,9 @@ Render
 
 ### options
 
-* 'localte`
-The name of the function to translate
-* `lang`
-The decfult languge
-* `query`
-The query to change the language
-* `error`.`select`
-The error when no have thats language
-* `error`.`list`
-The error when no have the list
-* `store`
-Your store
+* `localte`: The name of the function to translate
+* `lang` : The decfult languge
+* `query` : The query to change the language
+* `error`.`select` : The error when no have thats language
+* `error`.`list` : The error when no have the list
+* `store` : Your store
