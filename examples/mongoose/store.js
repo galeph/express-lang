@@ -30,7 +30,7 @@ translate.prototype.getLang = function (langs, fn) {
 		$or : list.reverse()
 	}).populate('extend').exec(function (err, doc) {
 		if(err || !doc) return fn(err);
-		fn(err, _.defaults( doc.keys, doc.extends.key || {}), doc.code);
+		fn(err, doc.getTransate(), doc.code);
 	});
 };
 
