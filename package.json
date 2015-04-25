@@ -1,6 +1,6 @@
 {
 	"name": "express-lang",
-	"version": "0.1.9",
+	"version": "0.2.0",
 	"description": "Transductor for ExpressJs",
 	"main": "lib/index.js",
 	"repository": {
@@ -8,7 +8,8 @@
 		"url": "git@github.com:galeph/express-lang.git"
 	},
 	"dependencies": {
-		"underscore" : ">=1.6.0"
+		"underscore" : ">=1.6.0",
+		"format" : ">=0.2.2"
 	},
 	"devDependencies": {
 		"mocha": "*"
