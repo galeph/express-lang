@@ -26,11 +26,15 @@ translate.prototype.getLang = function (langs, fn) {
 		if(langs[i]) list.push({ code : langs[i] });
 
 	this.model.findOne({ 
-		public : true,
 		$or : list.reverse()
 	}).populate('extend').exec(function (err, doc) {
-		if(err || !doc) return fn(err);
-		fn(err, doc.getTransate(), doc.code);
+		if(err || !doc)
+			return fn(err);
+		var data = doc.keys;
+		for (var i = doc.extend.length - 1; i >= 0; i--)
+			data = _.defaults(data, doc.extend[i].keys);
+
+		fn(err, data, doc.code);
 	});
 };
 
