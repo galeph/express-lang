@@ -1,6 +1,6 @@
 {
 	"name": "express-lang",
-	"version": "0.2.1",
+	"version": "0.2.2",
 	"description": "Transductor for ExpressJs",
 	"main": "lib/index.js",
 	"repository": {
