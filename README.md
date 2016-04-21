@@ -12,52 +12,40 @@ System for lang
 
 Config
 
-	var expressLang = require('express-lang');
-	app.use(expressLang(options));
+	var lang = require('express-lang');
+	app.use( new Lang( getLang, listLang, options));
 
 
 Store
 
-
-	var expressLang = require('express-lang');
-	var translate = function(options) {
-		expressLang.Store.call(this, options);
-	};
-
-	util.inherits(translate,  expressLang.Store);
-
-	translate.prototype.getLang = function (langs, fn) { // This is VERY IMPORTAN!
-		// langs => [ 'es_es', 'es', 'en_us', 'en' ]
-		var keys = {
-			// Your translate
-			'my Key' : 'This is the translate',
-			'and other' :'This is other %s'
+	let getLang = (ListLangsForUser, callback) => {
+		let codeLang = 'es';
+		let jsonmsgid = {
+			'translate' : [ 'tradicir', 'traducion', ... ],
+			'number is %d' : [ 'El numero es %d' ]
 		};
 
-		fn(err, keys, code);
+		callback( error, jsonmsgid, codeLang )
 	};
-
-	translate.prototype.listLang = function(fn) {
-		fn(err, [
-			// List the language
-		])
+	let listLang = (callback) => {
+		let ArrayLangs = [ 'es', 'en' ];
+	 	callback( error, ArrayLangs );
 	};
 
 Templates
 
-	p= t('my Key')
-	p= t('and other', 'key')
+	p= t('translate')
+	p= t('number is %d', 10)
 
 Render
 
-	<p>This is the translate</p>
-	<p>This is other key</p>
+	<p>tradicir</p>
+	<p>El numero es 10</p>
 
-### options
+### Options
 
 * `localte`: The name of the function to translate
 * `lang` : The decfult languge
 * `query` : The query to change the language
-* `error`.`select` : The error when no have thats language
-* `error`.`list` : The error when no have the list
-* `store` : Your store
+* `errorSelect` : The error when no have thats language
+* `errorList` : The error when no have the list
