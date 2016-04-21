@@ -12,35 +12,35 @@ System for lang
 
 Config
 ```javascript
-	var lang = require('express-lang');
-	app.use( new Lang( getLang, listLang, options));
+var lang = require('express-lang');
+app.use( new Lang( getLang, listLang, options));
 ```
 
 Store
 ```javascript
-	let getLang = (ListLangsForUser, callback) => {
-		let codeLang = 'es';
-		let jsonmsgid = {
-			'translate' : [ 'tradicir', 'traducion', ... ],
-			'number is %d' : [ 'El numero es %d' ]
-		};
+let getLang = (ListLangsForUser, callback) => {
+	let codeLang = 'es';
+	let jsonmsgid = {
+		'translate' : [ 'tradicir', 'traducion', ... ],
+		'number is %d' : [ 'El numero es %d' ]
+	};
+	callback( error, jsonmsgid, codeLang )
+};
 
-		callback( error, jsonmsgid, codeLang )
-	};
-	let listLang = (callback) => {
-		let ArrayLangs = [ 'es', 'en' ];
-	 	callback( error, ArrayLangs );
-	};
+let listLang = (callback) => {
+	let ArrayLangs = [ 'es', 'en' ];
+	 callback( error, ArrayLangs );
+};
 ```
 Templates
 ```jade
-	p= t('translate')
-	p= t('number is %d', 10)
+p= t('translate')
+p= t('number is %d', 10)
 ```
 Render
 ```html
-	<p>tradicir</p>
-	<p>El numero es 10</p>
+<p>tradicir</p>
+<p>El numero es 10</p>
 ```
 ### Options
 
