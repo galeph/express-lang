@@ -2,11 +2,14 @@ import {vsprintf} from 'format';
 import * as _ from 'underscore';
 
 /**
- *  opts = {};
- *  getL = (ListLangsForUser, callback) => {
+ * Example:
+ * 
+ *  import {lang} form 'express-lang';
+ *  let opts = { ...Options };
+ *  let getL = (ListLangsForUser, callback) => {
  *    callback( error, jsonmsgid, codeLang )
  *  };
- *  listL = (callback) => {
+ *  let listL = (callback) => {
  *    callback( error, ArrayLangs );
  *  };
  *  let app = express();
