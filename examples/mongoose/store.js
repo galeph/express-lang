@@ -1,6 +1,5 @@
-const util = require( process.binding('natives').util ? 'util' : 'sys');
+const url = 'mongo://localhost:2017/myDB';
 const _ = require('underscore');
-var lang = require('../lib');
 var mongo = require('mongoose');
 
 var ObjectId= mongo.Schema.Types.ObjectId;
@@ -11,21 +10,15 @@ var langSchema = new mongo.Schema({
 	keys	: Mixed,
 	extend	: { type : ObjectId, ref: 'lang' },
 });
+mongo.connect(url);
+var model = mongo.model('lang', langSchema);
 
-var translate = function(url) {
-	mongo.connect(url);
-	this.model = mongo.model('lang', langSchema);
-	lang.Store.call(this, {});
-};
-
-util.inherits(translate,  lang.Store);
-
-translate.prototype.getLang = function (langs, fn) {
+module.exports.getLang = function (langs, fn) {
 	var list = [ ];
 	for (var i = langs.length - 1; i >= 0; i--)
 		if(langs[i]) list.push({ code : langs[i] });
 
-	this.model.findOne({ 
+	model.findOne({ 
 		$or : list.reverse()
 	}).populate('extend').exec(function (err, doc) {
 		if(err || !doc)
@@ -38,8 +31,11 @@ translate.prototype.getLang = function (langs, fn) {
 	});
 };
 
-translate.prototype.listLang = function(fn) {
-	this.model.find().select('-keys').exec(fn);
+module.exports.listLang = function(fn) {
+	model.find().select('-keys').exec(fn);
 };
 
-module.exports = translate;
+
+module.exports.opts = {
+	lang : 'es'
+};

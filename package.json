@@ -1,18 +1,22 @@
 {
 	"name": "express-lang",
-	"version": "0.2.2",
+	"version": "1.0.2",
 	"description": "Transductor for ExpressJs",
 	"main": "lib/index.js",
 	"repository": {
 		"type": "git",
 		"url": "git@github.com:galeph/express-lang.git"
 	},
+	"scripts": {
+		"build": "babel src -d lib"
+	},
 	"dependencies": {
 		"underscore" : ">=1.6.0",
 		"format" : ">=0.2.1"
 	},
 	"devDependencies": {
-		"mocha": "*"
+		"mocha": "*",
+		"babel-cli": "^6.0.0"
 	},
 	"bin": {
 		"require": "lib/index.js"
@@ -23,5 +27,8 @@
 		"translate"
 	],
 	"author": "Galeph <open@galeph.com>",
-	"license": "MIT"
+	"license": "MIT",
+	"babel" :{
+		"presets": ["es2015"]
+	}
 }
